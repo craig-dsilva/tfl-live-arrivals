@@ -19,7 +19,11 @@ const Search: React.FC<SearchInterface> = ({ handleStations }) => {
         placeholder="Enter station name"
         onChangeText={searchInputHandler}
       />
-      <Button title="Search" onPress={() => handleStations(enteredQuery)} />
+      <Button
+        title="Search"
+        color={'#113b92'}
+        onPress={() => handleStations(enteredQuery)}
+      />
     </View>
   );
 };
@@ -28,6 +32,7 @@ export default Search;
 
 const styles = StyleSheet.create({
   inputContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

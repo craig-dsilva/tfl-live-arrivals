@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import Search from './containers/Search';
+import Stations from './containers/Stations';
 
-export default function App() {
+const App = () => {
   const [stations, setStations] = useState([]);
 
   const getStations = (stationName: string) => {
@@ -23,12 +24,16 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Search handleStations={getStations} />
+      <Stations stations={stations} />
     </View>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
   },
