@@ -3,15 +3,23 @@ import React from 'react';
 
 interface StationsInterface {
   stations: any[];
+  handleArrivals: (stationId: string) => void;
 }
 
-const Stations: React.FC<StationsInterface> = ({ stations }) => {
+const Stations: React.FC<StationsInterface> = ({
+  stations,
+  handleArrivals,
+}) => {
   return (
     <View style={styles.stationsContainer}>
       {stations.map((station: any) => {
         return (
           <View key={station.id} style={styles.station}>
-            <Button color={'#113b92'} title={station.name} />
+            <Button
+              color={'#113b92'}
+              title={station.name}
+              onPress={() => handleArrivals(station.id)}
+            />
           </View>
         );
       })}
