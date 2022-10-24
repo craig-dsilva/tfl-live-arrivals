@@ -1,6 +1,8 @@
 import { StyleSheet, Button, View } from 'react-native';
 import React from 'react';
 
+import stationName from '../helpers/stationName';
+
 interface StationsInterface {
   stations: any[];
   handleArrivals: (stationId: string) => void;
@@ -17,7 +19,11 @@ const Stations: React.FC<StationsInterface> = ({
           <View key={station.id} style={styles.station}>
             <Button
               color={'#113b92'}
-              title={station.name}
+              title={
+                station.name.includes('Station')
+                  ? stationName(station.name)
+                  : station.name
+              }
               onPress={() => handleArrivals(station.id)}
             />
           </View>
