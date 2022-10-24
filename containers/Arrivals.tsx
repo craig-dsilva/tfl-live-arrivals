@@ -15,7 +15,8 @@ const Arrivals: React.FC<ArrivalsInterface> = ({ arrivals }) => {
           <Arrival
             key={arrival.id}
             destination={arrival.destinationName}
-            current={arrival.currentLocation}
+            lineName={arrival.lineName}
+            timeToStation={arrival.timeToStation}
           />
         );
       })}

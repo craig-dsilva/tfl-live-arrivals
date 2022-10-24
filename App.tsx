@@ -32,7 +32,9 @@ const App = () => {
           `https://api.tfl.gov.uk/StopPoint/${stationId}/Arrivals`
         );
         const data = await res.json();
-        setArrivals(data);
+        setArrivals(
+          data.sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+        );
       } catch (error) {
         console.error(error);
       }

@@ -19,11 +19,7 @@ const Stations: React.FC<StationsInterface> = ({
           <View key={station.id} style={styles.station}>
             <Button
               color={'#113b92'}
-              title={
-                station.name.includes('Station')
-                  ? stationName(station.name)
-                  : station.name
-              }
+              title={stationName(station.name)}
               onPress={() => handleArrivals(station.id)}
             />
           </View>
