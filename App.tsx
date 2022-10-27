@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import Search from './containers/Search';
@@ -8,6 +8,7 @@ import Arrivals from './containers/Arrivals';
 const App = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
+  const iRef = useRef<any>();
 
   const getStations = (stationName: string) => {
     const fetchStations = async () => {
@@ -26,6 +27,7 @@ const App = () => {
   };
 
   const getArrivals = (stationId: string) => {
+    clearInterval(iRef.current);
     const fetchArrivals = async () => {
       try {
         const res = await fetch(
@@ -40,10 +42,8 @@ const App = () => {
       }
     };
     fetchArrivals();
-    setInterval(() => fetchArrivals(), 30000);
+    iRef.current = setInterval(() => fetchArrivals(), 30000);
   };
-
-  console.log(arrivals);
 
   return (
     <View style={styles.container}>
