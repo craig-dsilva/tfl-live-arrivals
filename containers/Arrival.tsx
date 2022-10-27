@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 
 import stationName from '../helpers/stationName';
@@ -21,7 +21,14 @@ const Arrival: React.FC<ArrivalInterface> = ({
         <Text>
           {!destination ? 'Check Front of Train' : stationName(destination)}
         </Text>
-        <Text>{toMinutes(timeToStation)}</Text>
+
+        <Text>
+          <Image
+            source={require('../assets/signal.png')}
+            style={{ width: 25, height: 25 }}
+          />
+          {timeToStation && toMinutes(timeToStation)}
+        </Text>
       </View>
       <Text>{lineName}</Text>
       {/* {current && <Text>Currently {current}</Text>} */}

@@ -40,6 +40,7 @@ const App = () => {
       }
     };
     fetchArrivals();
+    setInterval(() => fetchArrivals(), 30000);
   };
 
   console.log(arrivals);
