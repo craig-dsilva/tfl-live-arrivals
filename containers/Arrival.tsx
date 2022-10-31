@@ -3,11 +3,29 @@ import React from 'react';
 
 import stationName from '../helpers/stationName';
 import toMinutes from '../helpers/toMinutes';
+import tubeColour from '../assets/tubeColours.json';
 
 interface ArrivalInterface {
   destination: string;
   lineName: string;
   timeToStation: number;
+}
+
+interface tubeColourInterface {
+  Bakerloo: string[];
+  District: string[];
+  'Elizabeth line': string[];
+  'Hammersmith & City': string[];
+  Jubilee: string[];
+  'London Overground': string[];
+  Metropolitan: string[];
+  Piccadilly: string[];
+  'Waterloo & City': string[];
+  Central: string[];
+  Circle: string[];
+  Northern: string[];
+  Victoria: string[];
+  DLR: string[];
 }
 
 const Arrival: React.FC<ArrivalInterface> = ({
@@ -30,8 +48,26 @@ const Arrival: React.FC<ArrivalInterface> = ({
           {timeToStation && toMinutes(timeToStation)}
         </Text>
       </View>
-      <Text>{lineName}</Text>
-      {/* {current && <Text>Currently {current}</Text>} */}
+      <View
+        style={{
+          backgroundColor:
+            tubeColour[lineName as keyof tubeColourInterface] &&
+            tubeColour[lineName as keyof tubeColourInterface][0],
+          maxWidth: 100,
+          borderRadius: 7,
+          padding: 5,
+        }}
+      >
+        <Text
+          style={{
+            color:
+              tubeColour[lineName as keyof tubeColourInterface] &&
+              tubeColour[lineName as keyof tubeColourInterface][1],
+          }}
+        >
+          {lineName === 'Hammersmith & City' ? 'H & C' : lineName}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -40,8 +76,8 @@ export default Arrival;
 
 const styles = StyleSheet.create({
   arrival: {
-    margin: 8,
-    padding: 8,
+    margin: 4,
+    padding: 4,
     borderRadius: 6,
   },
   top: {

@@ -32,10 +32,11 @@ export default Search;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: 50,
+    marginBottom: 20,
   },
   TextInput: {
     borderWidth: 1,
