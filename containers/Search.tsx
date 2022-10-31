@@ -12,18 +12,23 @@ const Search: React.FC<SearchInterface> = ({ handleStations }) => {
     setEnteredQuery(query);
   };
 
+  const onClickSearch = () => {
+    if (enteredQuery === '') {
+      return;
+    }
+    handleStations(enteredQuery);
+    setEnteredQuery('');
+  };
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.TextInput}
         placeholder="Enter station name"
         onChangeText={searchInputHandler}
+        value={enteredQuery}
       />
-      <Button
-        title="Search"
-        color={'#113b92'}
-        onPress={() => handleStations(enteredQuery)}
-      />
+      <Button title="Search" color={'#113b92'} onPress={onClickSearch} />
     </View>
   );
 };
