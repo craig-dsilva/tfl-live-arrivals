@@ -35,7 +35,9 @@ const App = () => {
         );
         const data = await res.json();
         setArrivals(
-          data.sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+          data
+            .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+            .slice(0, 9)
         );
       } catch (error) {
         console.error(error);
