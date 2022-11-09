@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import Search from './containers/Search';
 import Stations from './containers/Stations';

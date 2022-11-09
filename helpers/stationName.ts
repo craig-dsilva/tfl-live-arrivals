@@ -1,4 +1,4 @@
-const stationName = (str) => {
+const stationName = (str: string) => {
   if (str.includes('Station')) {
     const split = str.split(' ');
     split.splice(split.length - 2, 2);
