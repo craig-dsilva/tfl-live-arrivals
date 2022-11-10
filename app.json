@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "tfl-live-arrivals",
+    "name": "TFL Live Arrivals",
     "slug": "tfl-live-arrivals",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/underground-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/underground-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,10 +22,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.craigdsilva.tfllivearrivals"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "180c7e43-12e1-47df-a053-b5ea9c94564f"
+      }
     }
   }
 }
