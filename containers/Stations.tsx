@@ -1,17 +1,39 @@
 import { StyleSheet, Button, View } from 'react-native';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import stationName from '../helpers/stationName';
 
 interface StationsInterface {
   stations: any[];
-  handleArrivals: (stationId: string) => void;
+  handleArrivals: any;
 }
 
 const Stations: React.FC<StationsInterface> = ({
   stations,
   handleArrivals,
 }) => {
+  const iRef = useRef<any>();
+
+  const getArrivals = (stationId: string) => {
+    clearInterval(iRef.current);
+    const fetchArrivals = async () => {
+      try {
+        const res = await fetch(
+          `https://api.tfl.gov.uk/StopPoint/${stationId}/Arrivals`
+        );
+        const data = await res.json();
+        handleArrivals(
+          data
+            .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+            .slice(0, 9)
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchArrivals();
+    iRef.current = setInterval(() => fetchArrivals(), 30000);
+  };
   return (
     <View style={styles.stationsContainer}>
       {stations.map((station: any) => {
@@ -20,7 +42,7 @@ const Stations: React.FC<StationsInterface> = ({
             <Button
               color={'#113b92'}
               title={stationName(station.name)}
-              onPress={() => handleArrivals(station.id)}
+              onPress={() => getArrivals(station.id)}
             />
           </View>
         );
