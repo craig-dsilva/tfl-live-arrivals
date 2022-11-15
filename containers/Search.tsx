@@ -2,8 +2,8 @@ import { StyleSheet, TextInput, View, Button } from 'react-native';
 import React, { useState } from 'react';
 
 interface SearchInterface {
-  handleStations: any;
-  handleArrivals: any;
+  handleStations: React.Dispatch<React.SetStateAction<never[]>>;
+  handleArrivals: React.Dispatch<React.SetStateAction<never[]>>;
 }
 
 const Search: React.FC<SearchInterface> = ({
