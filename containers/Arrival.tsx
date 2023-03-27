@@ -65,7 +65,7 @@ const Arrival: React.FC<ArrivalInterface> = ({
               tubeColour[lineName as keyof tubeColourInterface][1],
           }}
         >
-          {lineName === 'Hammersmith & City' ? "H'smith & City" : lineName}
+          {lineName === 'Hammersmith & City' ? 'H & C' : lineName}
         </Text>
       </View>
     </View>

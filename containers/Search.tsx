@@ -2,41 +2,21 @@ import { StyleSheet, TextInput, View, Button } from 'react-native';
 import React, { useState } from 'react';
 
 interface SearchInterface {
-  handleStations: React.Dispatch<React.SetStateAction<never[]>>;
-  handleArrivals: React.Dispatch<React.SetStateAction<never[]>>;
+  handleStations: (enteredQuery: string) => void;
 }
 
-const Search: React.FC<SearchInterface> = ({
-  handleStations,
-  handleArrivals,
-}) => {
+const Search: React.FC<SearchInterface> = ({ handleStations }) => {
   const [enteredQuery, setEnteredQuery] = useState('');
 
   const searchInputHandler = (query: string) => {
     setEnteredQuery(query);
   };
 
-  const getStations = (stationName: string) => {
-    const fetchStations = async () => {
-      try {
-        const res = await fetch(
-          `https://api.tfl.gov.uk/StopPoint/Search/${stationName}`
-        );
-        const data = await res.json();
-        handleStations(data.matches.filter((stn: any) => stn.zone));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchStations();
-    handleArrivals([]);
-  };
-
   const onClickSearch = () => {
     if (enteredQuery === '') {
       return;
     }
-    getStations(enteredQuery);
+    handleStations(enteredQuery);
     setEnteredQuery('');
   };
 

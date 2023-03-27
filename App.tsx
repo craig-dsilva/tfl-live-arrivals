@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Search from './containers/Search';
@@ -8,14 +8,52 @@ import Arrivals from './containers/Arrivals';
 const App = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
+  const iRef = useRef<any>();
+
+  const getStations = (stationName: string) => {
+    const fetchStations = async () => {
+      try {
+        const res = await fetch(
+          `https://api.tfl.gov.uk/StopPoint/Search/${stationName}`
+        );
+        const data = await res.json();
+        setStations(data.matches.filter((stn: any) => stn.zone));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchStations();
+    setArrivals([]);
+  };
+
+  const getArrivals = (stationId: string) => {
+    clearInterval(iRef.current);
+    const fetchArrivals = async () => {
+      try {
+        const res = await fetch(
+          `https://api.tfl.gov.uk/StopPoint/${stationId}/Arrivals`
+        );
+        const data = await res.json();
+        setArrivals(
+          data
+            .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+            .slice(0, 9)
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchArrivals();
+    iRef.current = setInterval(() => fetchArrivals(), 30000);
+  };
 
   return (
     <View style={styles.container}>
-      <Search handleStations={setStations} handleArrivals={setArrivals} />
+      <Search handleStations={getStations} />
       {arrivals.length > 0 ? (
         <Arrivals arrivals={arrivals} />
       ) : (
-        <Stations stations={stations} handleArrivals={setArrivals} />
+        <Stations stations={stations} handleArrivals={getArrivals} />
       )}
     </View>
   );
