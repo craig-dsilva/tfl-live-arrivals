@@ -2,15 +2,15 @@
   "Bakerloo": ["#894e24", "#fff"],
   "District": ["#007229", "#fff"],
   "Elizabeth line": ["#6950a1", "#fff"],
-  "Hammersmith & City": ["#d799af", "#000"],
+  "Hammersmith & City": ["#d799af", "#113b92"],
   "Jubilee": ["#6a7278", "#fff"],
   "London Overground": ["#e86a10", "#fff"],
   "Metropolitan": ["#751056", "#fff"],
   "Piccadilly": ["#0019a8", "#fff"],
   "Waterloo & City": ["#76d0bd"],
   "Central": ["#dc241f", "#fff"],
-  "Circle": ["#ffce00", "#000"],
+  "Circle": ["#ffce00", "#113b92"],
   "Northern": ["#000", "#fff"],
-  "Victoria": ["#00a0e2", "#000"],
-  "DLR": ["#00afad", "#000"]
+  "Victoria": ["#00a0e2", "#113b92"],
+  "DLR": ["#00afad", "#113b92"]
 }
