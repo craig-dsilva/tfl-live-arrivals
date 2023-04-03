@@ -37,7 +37,9 @@ const Arrival: React.FC<ArrivalInterface> = ({
     <View style={styles.arrival}>
       <View style={styles.top}>
         <Text>
-          {!destination ? 'Check Front of Train' : stationName(destination)}
+          {!destination
+            ? 'Check Front of Train'
+            : stationName(destination).replace(/ *\([^)]*\) */g, '')}
         </Text>
 
         <Text>
@@ -65,7 +67,7 @@ const Arrival: React.FC<ArrivalInterface> = ({
               tubeColour[lineName as keyof tubeColourInterface][1],
           }}
         >
-          {lineName === 'Hammersmith & City' ? 'H & C' : lineName}
+          {lineName === 'Hammersmith & City' ? "H'smith & City" : lineName}
         </Text>
       </View>
     </View>
