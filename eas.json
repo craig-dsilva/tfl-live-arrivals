@@ -1,9 +1,12 @@
 {
   "cli": {
-    "version": ">= 2.6.0"
+    "version": ">= 2.6.0",
+    "appVersionSource": "remote"
   },
   "build": {
+    "base": { "node": "24.11.0" },
     "development": {
+      "extends": "base",
       "developmentClient": true,
       "distribution": "internal"
     },
