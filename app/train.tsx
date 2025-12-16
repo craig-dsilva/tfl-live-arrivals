@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Search from './containers/Search';
-import Stations from './containers/Stations';
-import Arrivals from './containers/Arrivals';
+import Search from '../components/Search';
+import Stations from '../components/Stations';
+import Arrivals from '../components/Arrivals';
 
-const App = () => {
+const Train = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
   const iRef = useRef<any>();
@@ -59,7 +59,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default Train;
 
 const styles = StyleSheet.create({
   container: {

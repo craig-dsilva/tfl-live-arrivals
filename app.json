@@ -32,6 +32,8 @@
       "eas": {
         "projectId": "180c7e43-12e1-47df-a053-b5ea9c94564f"
       }
-    }
+    },
+    "plugins": ["expo-router"],
+    "scheme": "tfl-live-arrivals"
   }
 }
