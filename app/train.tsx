@@ -8,7 +8,7 @@ import Arrivals from '../components/Arrivals';
 const Train = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
-  const iRef = useRef<any>();
+  const iRef = useRef(setInterval(() => null, 0));
 
   const getStations = async (stationName: string) => {
     try {
