@@ -10,19 +10,16 @@ const Train = () => {
   const [arrivals, setArrivals] = useState([]);
   const iRef = useRef<any>();
 
-  const getStations = (stationName: string) => {
-    const fetchStations = async () => {
-      try {
-        const res = await fetch(
-          `https://api.tfl.gov.uk/StopPoint/Search/${stationName}`
-        );
-        const data = await res.json();
-        setStations(data.matches.filter((stn: any) => stn.zone));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchStations();
+  const getStations = async (stationName: string) => {
+    try {
+      const res = await fetch(
+        `https://api.tfl.gov.uk/StopPoint/Search/${stationName}`,
+      );
+      const data = await res.json();
+      setStations(data.matches.filter((stn: any) => stn.zone));
+    } catch (error) {
+      console.error(error);
+    }
     setArrivals([]);
   };
 
@@ -31,13 +28,13 @@ const Train = () => {
     const fetchArrivals = async () => {
       try {
         const res = await fetch(
-          `https://api.tfl.gov.uk/StopPoint/${stationId}/Arrivals`
+          `https://api.tfl.gov.uk/StopPoint/${stationId}/Arrivals`,
         );
         const data = await res.json();
         setArrivals(
           data
             .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
-            .slice(0, 9)
+            .slice(0, 9),
         );
       } catch (error) {
         console.error(error);
