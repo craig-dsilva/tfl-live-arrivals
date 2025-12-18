@@ -13,6 +13,7 @@ const Train = () => {
   const iRef = useRef<NodeJS.Timeout>(null!);
 
   const getStations = async (stationName: string) => {
+    clearInterval(iRef.current);
     try {
       const res = await fetch(
         `https://api.tfl.gov.uk/StopPoint/Search?query=${stationName}&modes=${trainModes.join()}`,
