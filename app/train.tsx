@@ -5,6 +5,8 @@ import Search from '../components/Search';
 import Stations from '../components/Stations';
 import Arrivals from '../components/Arrivals';
 
+import trainModes from '../helpers/trainModes';
+
 const Train = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
@@ -13,10 +15,10 @@ const Train = () => {
   const getStations = async (stationName: string) => {
     try {
       const res = await fetch(
-        `https://api.tfl.gov.uk/StopPoint/Search/${stationName}`,
+        `https://api.tfl.gov.uk/StopPoint/Search?query=${stationName}&modes=${trainModes.join()}`,
       );
       const data = await res.json();
-      setStations(data.matches.filter((stn: any) => stn.zone));
+      setStations(data.matches);
     } catch (error) {
       console.error(error);
     }
