@@ -5,7 +5,7 @@ import Search from '../components/Search';
 import Stations from '../components/Stations';
 import Arrivals from '../components/Arrivals';
 
-import trainModes from '../helpers/trainModes';
+import trainModes from '../helpers/trainModes.json';
 
 const Train = () => {
   const [stations, setStations] = useState([]);

@@ -3,7 +3,7 @@ import React from 'react';
 
 import stationName from '../helpers/stationName';
 import toMinutes from '../helpers/toMinutes';
-import tubeColour from '../assets/tubeColours.json';
+import tubeColour from '../helpers/tubeColours.json';
 
 interface ArrivalInterface {
   destination: string;
