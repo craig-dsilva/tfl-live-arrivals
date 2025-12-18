@@ -10,7 +10,7 @@ import trainModes from '../helpers/trainModes';
 const Train = () => {
   const [stations, setStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
-  const iRef = useRef(setInterval(() => null, 0));
+  const iRef = useRef<NodeJS.Timeout>(null!);
 
   const getStations = async (stationName: string) => {
     try {
